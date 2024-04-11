@@ -1,15 +1,64 @@
 'use client'
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-
+import Image from "next/image"
+import Input from "@/app/components/forms/Input";
+import Button from "@/app/components/forms/Button";
+import NRLogo from "@/public/nr.png"
+import Link from "@/app/components/navs/Link";
 export default function Login() {
-  const modalRef = useRef<any>()
 
+  const displayDate = () => {
+    return new Date().toLocaleString();
+  }
 
+  const getCurrentYear = () => {
+    return new Date().getFullYear()
+  }
   return (
-    <div className="flex flex-col items-center m-auto w-100 bg-white glass p-5 sm:w-[300px] md:w-[40%] xl:w-[30%] h-[100%] rounded-xl ">
-      <div className="title font-bold text-xl">NR Dashboard </div>
-    <div className="">This page is will be available soon!</div>
+    <div className="
+    p-10
+    dark:bg-gray-800 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600
+    flex flex-col m-auto w-100 items-center bg-white glass sm:w-[300px] md:w-[40%] xl:w-[400px] h-[100%] rounded-xl ">
+      <div className="">
+        <Image className="object-cover w-[100px] h-[100px] opacity-90" src={NRLogo} alt="" />
+      </div>
+      <div className="title font-bold text-2xl dark:text-white">NR Login </div>
+      <div className="text-[13px]">{displayDate()}</div>
+
+      <Input
+        wrapperClassName="mt-5"
+        placeholder="Enter Admin Password"
+      />
+
+      <div className="mt-2 w-full">
+        <Button buttonStyle="solid">
+          <div className="flex items-center justify-center gap-2">
+            LOGIN
+            <svg className="flex-shrink-0 size-4"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </div>
+        </Button>
+      </div>
+
+      <Link>
+        <div className="mt-5 font-bold text-[14px]" >
+          Forgot Password?
+        </div>
+      </Link>
+
+      <div className="mt-4 text-[14px]">
+     Copyright © {getCurrentYear()} <span className="">NR Realty Development</span>
+      </div>
     </div>
 
   );

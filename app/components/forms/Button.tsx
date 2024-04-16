@@ -4,14 +4,16 @@ type Props = {
   children: React.ReactNode,
   type?: "submit" | "button"
   className?: string,
-  buttonStyle?: "solid" | "outline"
+  buttonStyle?: "solid" | "outline",
+  onClick?: () => void
 }
 
 function Button({
   children,
   type,
   buttonStyle,
-  className = ""
+  className = "",
+  onClick
 }: Props) {
 
   const buttonStyleList = {
@@ -28,6 +30,7 @@ function Button({
   }
   return (
     <button
+      onClick={onClick}
       type={type}
       className={className + " " + buttonStyleList?.[buttonStyle || "solid"]}>
       {children}

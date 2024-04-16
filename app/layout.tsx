@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AR_One_Sans } from "next/font/google";
+import { ThemeProvider } from 'next-themes'
 import "./globals.css";
 
 import PrelineScript from "./components/PrelineScript";
@@ -16,9 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-      <PrelineScript/>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class">{children}</ThemeProvider>
+      </body>
+      <PrelineScript />
     </html>
   );
 }

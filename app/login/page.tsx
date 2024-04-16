@@ -56,7 +56,7 @@ export default function Login() {
         </div>
       </Link>
 
-      <div className="mt-4 text-[14px]">
+      <div className="mt-4 text-[14px] text-center">
      Copyright © {getCurrentYear()} <span className="">NR Realty Development</span>
       </div>
     </div>

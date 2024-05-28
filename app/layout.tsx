@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { AR_One_Sans } from "next/font/google";
 import { ThemeProvider } from 'next-themes'
+
+import PrelineScript from "@/app/components/PrelineScript";
+import PageWrapper from "@/app/components/PageWrapper/PageWrapper";
 import "./globals.css";
 
-import PrelineScript from "./components/PrelineScript";
 const inter = AR_One_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,9 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <ThemeProvider attribute="class">
+          <PageWrapper>
+            {children}
+          </PageWrapper>
+        </ThemeProvider>
       </body>
       <PrelineScript />
     </html>

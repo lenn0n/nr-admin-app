@@ -1,7 +1,9 @@
 import React from 'react'
 import Card from '../../components/Card/Card'
-import { HomeModernIcon, DocumentTextIcon, ArrowLeftStartOnRectangleIcon, CreditCardIcon, UserGroupIcon, UsersIcon, BuildingOffice2Icon } from '@heroicons/react/24/solid'
+import { HomeModernIcon, CreditCardIcon, UserGroupIcon, UsersIcon, BuildingOffice2Icon } from '@heroicons/react/24/solid'
+import Logout from './logout'
 const Dashboard = () => {
+
   return (
     <div className="">
       <div className="h-[100vh]">
@@ -11,7 +13,7 @@ const Dashboard = () => {
               <Card>
                 <div className="font-bold text-xl">Admin Panel</div>
                 <div className="border-b border-slate-400 mb-5 mt-3 opacity-30"></div>
-                <div className="flex flex-row gap-2 mb-4 hover:text-slate-400 text-green-700 dark:text-green-500" role="button">
+                <div className="flex flex-row gap-2 mb-4 hover:text-slate-400 text-green-600 dark:text-green-500" role="button">
                   <HomeModernIcon className="h-6 w-6" />
                   <div className="font-bold">Dashboard</div>
                 </div>
@@ -32,10 +34,7 @@ const Dashboard = () => {
                   <div className="">Branch</div>
                 </div>
                 <div className="border-b border-slate-400 mb-5 mt-3 opacity-30"></div>
-                <div className="flex flex-row gap-2 mb-0 hover:text-slate-400 text-red-700 dark:text-red-500" role="button">
-                  <ArrowLeftStartOnRectangleIcon className="h-6 w-6" />
-                  <div className="">Logout</div>
-                </div>
+                <Logout/>
               </Card>
             </div>
             <div className="col-span-9 max-h-[80vh] overflow-hidden py-5">

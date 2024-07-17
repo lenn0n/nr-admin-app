@@ -1,21 +1,51 @@
-import { HTMLInputTypeAttribute } from "react"
+import { isCallbackValid } from "@/app/utils/validator"
 
 type Props = {
-  type?: HTMLInputTypeAttribute,
+  type?: React.HTMLInputTypeAttribute,
   wrapperClassName?: string,
-  placeholder?: string
+  placeholder?: string,
+  onEnter?: Function,
+  onChange?: Function,
+  value?: string | number,
+  name?: string,
+  autoFocus?: boolean
 }
 
 const Input = ({
   type = "text",
+  name,
   wrapperClassName,
-  placeholder
+  placeholder,
+  onEnter,
+  onChange,
+  value,
+  autoFocus
 }: Props) => {
+
+  const handleOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      if (isCallbackValid(onEnter) && onEnter){
+        onEnter(e)
+      }
+    }
+  }
+
+  const handleOnChange  = (e:  React.ChangeEvent<HTMLInputElement>) => {
+    if (isCallbackValid(onChange) && onChange){
+      onChange(e.target.value)
+    }
+  }
+
   return (
     <div className={`${wrapperClassName} relative w-full`}>
       <input
-        autoFocus
+        name={name}
+        autoComplete="false"
+        // value={value?? ''}
+        autoFocus={autoFocus}
         type={type}
+        onChange={handleOnChange}
+        onKeyUp={handleOnEnter}
         className={`border
         peer border-lime-500 py-3 px-4 bg-opacity-70 ps-11 block w-full bg-gray-100 border-transparent 
         rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 

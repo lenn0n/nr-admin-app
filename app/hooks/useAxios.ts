@@ -87,6 +87,7 @@ const useAxios = () => {
   }
 
   const checkIfUnauthorized = (statusCode: number) => {
+    return 
     if (statusCode === 401 && window.location.pathname !== '/login' && window.location.pathname !== '/') {
       removeAllToken()
       const hostName = String(window.location.hostname).replace("dev", "").replace("staging", "")

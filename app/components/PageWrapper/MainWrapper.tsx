@@ -1,15 +1,69 @@
 
+'use client'
+import { useState, useEffect } from 'react'
 import Card from '@/app/components/Card/Card'
 import Logout from '@/app/components/PageWrapper/Logout'
 import Image from "next/image"
 import { HomeModernIcon, CreditCardIcon, UserGroupIcon, UsersIcon, BuildingOffice2Icon } from '@heroicons/react/24/solid'
 
 import NRLogo from "@/public/nr.png"
+import { useRouter } from 'next/navigation'
 
 type MainWrapperProps = {
   children: React.ReactNode
 }
+
+type SideLinkProps = { title: string, Icon: React.ReactNode, url: string }
+
 const MainWrapper = ({ children }: MainWrapperProps) => {
+  const router = useRouter()
+  const [links, setLinks] = useState<SideLinkProps[]>([]);
+
+  const SideLink = ({ title, Icon, url }: SideLinkProps) => {
+    const isCurrentPath = String(window.location.pathname).includes(url)
+    return (<div
+      className={`flex flex-row gap-2 mb-4 hover:text-slate-400 
+        ${isCurrentPath ? ' text-green-600 dark:text-green-500' : 'text-slate-700 dark:text-slate-200'}`}
+      role="button"
+      onClick={() => { router.replace(url) }}>
+      {Icon}
+      <div className="font-bold hidden md:block">{title}</div>
+    </div>)
+  }
+
+  useEffect(() => {
+    const links = [
+      {
+        title: 'Dashboard',
+        url: '/dashboard',
+        Icon: <HomeModernIcon className="h-6 w-6" />
+      },
+      {
+        title: 'Payments',
+        url: '/payments',
+        Icon: <CreditCardIcon className="h-6 w-6" />
+      },
+      {
+        title: 'Clients',
+        url: '/clients',
+        Icon: <UserGroupIcon className="h-6 w-6" />
+      },
+      {
+        title: 'Agents',
+        url: '/agents',
+        Icon: <UsersIcon className="h-6 w-6" />
+      },
+      {
+        title: 'Branches',
+        url: '/branches',
+        Icon: <BuildingOffice2Icon className="h-6 w-6" />
+      },
+    ]
+
+    setLinks(links)
+
+  }, [])
+
 
   return (
     <>
@@ -23,26 +77,9 @@ const MainWrapper = ({ children }: MainWrapperProps) => {
               </div>
               <div className="border-b border-slate-400 mb-5 mt-3 opacity-30"></div>
               <div className="flex flex-row lg:flex-col justify-between">
-                <div className="flex flex-row gap-2 mb-4 hover:text-slate-400 text-green-600 dark:text-green-500" role="button">
-                  <HomeModernIcon className="h-6 w-6" />
-                  <div className="font-bold hidden md:block">Dashboard</div>
-                </div>
-                <div className="flex flex-row gap-2 mb-4 hover:text-slate-400 text-slate-700 dark:text-slate-200" role="button">
-                  <CreditCardIcon className="h-6 w-6" />
-                  <div className="font-bold hidden md:block">Payments</div>
-                </div>
-                <div className="flex flex-row gap-2 mb-4 hover:text-slate-400 text-slate-700 dark:text-slate-200" role="button">
-                  <UserGroupIcon className="h-6 w-6" />
-                  <div className="font-bold hidden md:block">Client</div>
-                </div>
-                <div className="flex flex-row gap-2 mb-4 hover:text-slate-400 text-slate-700 dark:text-slate-200" role="button">
-                  <UsersIcon className="h-6 w-6" />
-                  <div className="font-bold hidden md:block">Agent</div>
-                </div>
-                <div className="flex flex-row gap-2 mb-4 hover:text-slate-400 text-slate-700 dark:text-slate-200" role="button">
-                  <BuildingOffice2Icon className="h-6 w-6" />
-                  <div className="font-bold hidden md:block">Branch</div>
-                </div>
+                {links?.length > 0 && links.map((data: SideLinkProps) =>
+                  <SideLink title={data.title} url={data.url} Icon={data.Icon} />
+                )}
               </div>
               <div className="border-b border-slate-400 mb-5 mt-3 opacity-30"></div>
               <Logout />

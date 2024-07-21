@@ -61,37 +61,37 @@ const Page = () => {
     return (
       <>
         <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
-          <Item title="Total Collectibles" className='my-6' icon={CollectMoneyIcon as HTMLImageElement}>
+          <Item title="Total Collectibles" className='my-3' icon={CollectMoneyIcon as HTMLImageElement}>
             <span className='text-green-700 dark:text-green-500 font-bold'>
               {formatNumber(data.overall_lot.collectibles)}
             </span>
           </Item>
-          <Item title="Total Receivables" className='my-6' icon={ReceiveMoneyIcon as HTMLImageElement}>
+          <Item title="Total Receivables" className='my-3' icon={ReceiveMoneyIcon as HTMLImageElement}>
             <span className='text-red-700 dark:text-red-500 font-bold '>
               {formatNumber(data.overall_lot.receivables)}
             </span>
           </Item>
-          <Item title="Units" className='my-6' icon={AvailableUnitIcon as HTMLImageElement}>
+          <Item title="Units" className='my-3' icon={AvailableUnitIcon as HTMLImageElement}>
             <span className='text-slate-500 font-bold dark:text-white'>
               {formatNumber(data.available_units, 0, '')}
             </span>
           </Item>
-          <Item title="Total Client" className='my-6' icon={TotalClientIcon as HTMLImageElement}>
+          <Item title="Total Client" className='my-3' icon={TotalClientIcon as HTMLImageElement}>
             <span className='text-slate-500 font-bold dark:text-white'>
               {formatNumber(data.client_count, 0, '')}
             </span>
           </Item>
-          <Item title="Total Agent" className='my-6' icon={TotalAgentIcon as HTMLImageElement}>
+          <Item title="Total Agent" className='my-3' icon={TotalAgentIcon as HTMLImageElement}>
             <span className='text-slate-500 font-bold dark:text-white'>
               {formatNumber(data.agent_count, 0, '')}
             </span>
           </Item>
-          <Item title="Top Agent" className='my-6' icon={TopAgentIcon as HTMLImageElement}>
+          <Item title="Top Agent" className='my-3' icon={TopAgentIcon as HTMLImageElement}>
             <span className='text-slate-500 font-bold dark:text-white'>
               {data.top_agent[0].agent_name}
             </span>
           </Item>
-          <Item title="Top Agent Collectibles" className='my-6'  icon={TopAgentCollectible as HTMLImageElement}>
+          <Item title="Top Agent Collectibles" className='my-3'  icon={TopAgentCollectible as HTMLImageElement}>
           <span className='text-orange-700 dark:text-orange-500 font-bold'>
               {formatNumber(data.top_agent[0].collectibles)}
             </span>

@@ -22,6 +22,7 @@ const config: Config = {
   plugins: [
     require('preline/plugin'),
     require('@tailwindcss/forms'),
+    require('@tailwindcss/nesting'),
   ],
 };
 export default config;

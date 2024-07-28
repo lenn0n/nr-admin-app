@@ -60,8 +60,8 @@ const MainWrapper = ({ children }: MainWrapperProps) => {
         Icon: <UsersIcon className="h-6 w-6" />
       },
       {
-        title: 'Branches',
-        url: '/branches',
+        title: 'Lot Info',
+        url: '/lot',
         Icon: <BuildingOffice2Icon className="h-6 w-6" />
       },
     ]
@@ -78,8 +78,8 @@ const MainWrapper = ({ children }: MainWrapperProps) => {
         return 'Clients'
       case '/agents':
         return 'Agents'
-      case '/branches':
-        return 'Branches'
+      case '/lot':
+        return 'Lot Info'
       default:
         return 'Menu'
     }

@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import { useAxios } from "@hooks/all"
 import useTable from '@/app/hooks/useTable';
-
+import { formatRawNumber } from "@utils/validator"
 const Page = () => {
   const { get } = useAxios()
   const {
@@ -17,9 +17,9 @@ const Page = () => {
     placeholderCount: 4
   })
 
-  const getClients = async (tablePayload: any) => {
+  const getLotInfo = async (tablePayload: any) => {
     const response = await get({
-      url: "/client",
+      url: "/lot",
       payload: tablePayload,
       objectPayloadToURLParams: true,
       requiresAuth: true,
@@ -28,16 +28,17 @@ const Page = () => {
 
     if (response.result) {
       const tableData: any = []
-      response.data.map((client: any) => {
-
-        const updatedAt =
-          new Date(client.updatedAt)
-            .toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
-
+      response.data.map((lot: any) => {
         tableData.push({
           rows: [
-            { key: 'name', value: client.client_name },
-            { key: 'date', value: updatedAt, className: 'mt-4' },
+            { key: 'project_name', value: lot.project_name },
+            { key: 'category', value: lot.category },
+            { key: 'area', value: lot.area },
+            { key: 'sqm', value: lot.sqm },
+            { key: 'price_per_sqm', value: formatRawNumber(lot.price_per_sqm, 0, "₱") },
+            { key: 'net_tcp', value: formatRawNumber(lot.net_tcp, 0, "₱") },
+            { key: 'collectibles', value: formatRawNumber(lot.collectibles, 0, "₱") },
+            { key: 'receivables', value: formatRawNumber(lot.receivables, 0, "₱") },
             {
               key: 'actions',
               jsx: <div className='flex gap-2'>
@@ -58,13 +59,19 @@ const Page = () => {
 
   useEffect(() => {
     setTableHeader([
-      { title: 'Name', className: 'text-start', colSpan: 1 },
-      { title: 'Added Date', className: 'text-start', colSpan: 1 },
+      { title: 'Project', className: 'text-start', colSpan: 1 },
+      { title: 'Category', className: 'text-start', colSpan: 1 },
+      { title: 'Area', className: 'text-start', colSpan: 1 },
+      { title: 'SQM', className: 'text-start', colSpan: 1 },
+      { title: 'Price', className: 'text-start', colSpan: 1 },
+      { title: 'Net TCP', className: 'text-start', colSpan: 1 },
+      { title: 'Collectibles', className: 'text-start', colSpan: 1 },
+      { title: 'Receivables', className: 'text-start', colSpan: 1 },
       { title: 'Actions', className: 'text-start', colSpan: 1 },
     ])
 
     setTablePayload({ search: 'highest' })
-    setTableDataRetriever(getClients)
+    setTableDataRetriever(getLotInfo)
   }, [])
 
   return (

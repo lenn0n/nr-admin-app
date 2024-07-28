@@ -35,11 +35,12 @@ export default function Login() {
         payload: { password }
       })
 
-      if (response.result) {
+      if (response.result && response.data.access) {
         // Set token to browser's cookies
+
         setCookie({
           name: 'user_token',
-          value: encode(response.access),
+          value: encode(response.data.access),
           days: 7
         })
         // Redirect to dashboard

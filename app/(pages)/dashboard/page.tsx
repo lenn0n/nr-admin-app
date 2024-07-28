@@ -32,7 +32,7 @@ const Page = () => {
       authPrefix: 'Bearer'
     })
     if (response.result) {
-      setData(response)
+      setData(response.data)
     }
   }
 
@@ -55,52 +55,50 @@ const Page = () => {
   }, [])
 
 
-  if (!data) {
-    return (<>Loading....</>)
-  } else {
+  
     return (
       <>
         <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
           <Item title="Total Collectibles" className='my-3' icon={CollectMoneyIcon as HTMLImageElement}>
             <span className='text-green-700 dark:text-green-500 font-bold'>
-              {formatNumber(data.overall_lot.collectibles)}
+              {formatNumber(data?.overall_lot.collectibles?? 0)}
             </span>
           </Item>
           <Item title="Total Receivables" className='my-3' icon={ReceiveMoneyIcon as HTMLImageElement}>
             <span className='text-red-700 dark:text-red-500 font-bold '>
-              {formatNumber(data.overall_lot.receivables)}
+              {formatNumber(data?.overall_lot.receivables?? 0)}
             </span>
           </Item>
           <Item title="Units" className='my-3' icon={AvailableUnitIcon as HTMLImageElement}>
             <span className='text-slate-500 font-bold dark:text-white'>
-              {formatNumber(data.available_units, 0, '')}
+              {formatNumber(data?.available_units?? 0, 0, '')}
             </span>
           </Item>
           <Item title="Total Client" className='my-3' icon={TotalClientIcon as HTMLImageElement}>
             <span className='text-slate-500 font-bold dark:text-white'>
-              {formatNumber(data.client_count, 0, '')}
+              {formatNumber(data?.client_count?? 0, 0, '')}
             </span>
           </Item>
           <Item title="Total Agent" className='my-3' icon={TotalAgentIcon as HTMLImageElement}>
             <span className='text-slate-500 font-bold dark:text-white'>
-              {formatNumber(data.agent_count, 0, '')}
+              {formatNumber(data?.agent_count?? 0, 0, '')}
             </span>
           </Item>
           <Item title="Top Agent" className='my-3' icon={TopAgentIcon as HTMLImageElement}>
             <span className='text-slate-500 font-bold dark:text-white'>
-              {data.top_agent[0].agent_name}
+              {data?.top_agent[0].agent_name}
             </span>
           </Item>
-          <Item title="Top Agent Collectibles" className='my-3'  icon={TopAgentCollectible as HTMLImageElement}>
-          <span className='text-orange-700 dark:text-orange-500 font-bold'>
-              {formatNumber(data.top_agent[0].collectibles)}
+          <Item title="Top Agent Collectibles" className='my-3' icon={TopAgentCollectible as HTMLImageElement}>
+            <span className='text-orange-700 dark:text-orange-500 font-bold'>
+              {formatNumber(data?.top_agent[0].collectibles)}
             </span>
           </Item>
         </div>
-     
+
       </>
     )
-  }
+
 
 
 }

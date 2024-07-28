@@ -24,7 +24,7 @@ const Auth = ({ children }: AuthProps) => {
 
   }, [])
 
-  return hasLoaded ? children : <div className="h-screen w-screen"/>
+  return hasLoaded ? children : <></>
 }
 
 export default Auth

@@ -15,10 +15,12 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -27,6 +29,7 @@
 .fadeIn {
   animation: fadeInAnimation ease 0.5s;
 }
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom,
@@ -42,13 +45,13 @@ body {
 }
 
 .glass {
-/* From https://css.glass */
-background: rgba(255, 255, 255, 0.41);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.41);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 input:focus {
@@ -57,4 +60,88 @@ input:focus {
 
 input {
   --tw-ring-shadow: 0 0 #000 !important;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  @apply dark:text-white
+}
+
+th {
+  text-align: start;
+  @apply text-sm pb-3
+}
+
+tr th {
+  @apply border-opacity-10 border-slate-700 border-b-[1px]
+}
+
+td {
+  height: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  @apply border-opacity-10 border-slate-700 border-b-[1px]
+}
+
+.td-mobile-items {
+  @apply block sm:hidden w-full border-opacity-10 border-slate-700 border-b-[1px];
+  .wrapper {
+    @apply flex justify-between py-1;
+    .title {
+      @apply font-bold capitalize
+    }
+  }
+}
+
+.td-desktop-items {
+  @apply hidden sm:table-cell
+}
+
+.pagination-parent {
+  @apply flex gap-3 items-center justify-center text-center mt-4 text-[15px]
+}
+
+.table-header {
+  @apply hidden sm:table-row
+}
+
+.pagination-buttons {
+  @apply w-[30px] h-[30px] text-white  rounded-md;
+}
+
+.pagination-buttons.active {
+  @apply bg-green-500;   
+}
+
+.pagination-buttons.inactive {
+  @apply bg-opacity-20 bg-slate-500;
+}
+
+.table-loader {
+  @apply my-2 me-2
+}
+
+.table-no-results {
+  @apply flex items-center justify-center p-5 my-[50px] opacity-55
+}
+
+.skeleton {
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  border-radius: 5px;
+  opacity: .6;
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+  @apply h-5 
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+.td-zebra{
+  @apply text-sm even:bg-slate-400 even:bg-opacity-30 sm:even:bg-transparent
 }

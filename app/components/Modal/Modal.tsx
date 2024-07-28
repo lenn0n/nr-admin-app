@@ -39,7 +39,7 @@ const Modal = ({
   }
 
   return createPortal(<div className="relative">
-    <div id="hs-vertically-centered-modal" className={`hs-overlay size-full fixed top-0 start-0 ${show() ? 'z-[80]' : 'z-0 duration-500 ease-out transition-all'} overflow-x-hidden overflow-y-auto pointer-events-none`}>
+    <div id="hs-vertically-centered-modal" className={`hs-overlay size-full fixed top-0 start-0 ${show() ? 'z-[80]' : 'z-0 duration-300 ease-out transition-all'} overflow-x-hidden overflow-y-auto pointer-events-none`}>
       <div className={`${show() ? 'mt-7 opacity-100' : 'mt-0 opacity-0'}  duration-500 p-5 ease-out transition-all ${modalSize[size]} min-h-[calc(100%-3.5rem)] flex items-center`}>
         <div className=" bg-opacity-90 w-full flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
           <div className={`justify-between items-center py-3 px-4 border-b dark:border-neutral-700 ${hideHeader ? 'hidden' : 'flex'}`}>

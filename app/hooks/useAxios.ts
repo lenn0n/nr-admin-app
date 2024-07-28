@@ -75,7 +75,7 @@ const useAxios = () => {
     const responseData = {
       result: true,
       headers: response?.headers,
-      ...response?.data
+      data: response?.data
     }
 
     setIsLoading(false);

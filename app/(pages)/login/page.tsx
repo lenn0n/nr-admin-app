@@ -1,24 +1,22 @@
 'use client'
 import Image from "next/image"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
-import { useAxios, useCookie, useDispatch, useEncryption } from "@hooks/all";
-import { openModal, closeModal } from "@/app/store/reducers/modal";
-
+import { useAxios, useCookie, useEncryption } from "@hooks/all";
 import Input from "@/app/components/Forms/Input";
 import Button from "@/app/components/Forms/Button";
 import NRLogo from "@/public/nr.png"
 import Link from "@/app/components/Navs/Link";
 import Card from "@/app/components/Card/Card";
 import Form from "@/app/components/Forms/Form";
-import ErrorModal from "@/app/components/Modal/ErrorModal";
+import useModal, { Modal } from "@hooks/useModal"
 
 export default function Login() {
   const router = useRouter()
-  const dispatch = useDispatch()
   const { encode } = useEncryption()
   const { post, isLoading } = useAxios()
   const { setCookie } = useCookie()
+  const { openModal, closeModal, modalProps, setModalProps } = useModal()
   const [password, setPassword] = useState<string | number>()
 
   const getCurrentYear = () => {
@@ -46,7 +44,13 @@ export default function Login() {
         // Redirect to dashboard
         router.push('/dashboard', { scroll: true })
       } else {
-        dispatch(openModal({ id: 'error-modal' }))
+        setModalProps({
+          title: "Error Password",
+          className: 'bg-green-700 bg-opacity-90 text-white text-[14px]',
+          headerClassName: 'text-white border-green-800 !text-[15px]',
+          showModal: true
+        })
+    
       }
 
     }
@@ -54,17 +58,14 @@ export default function Login() {
 
   return (
     <>
-      <ErrorModal
-        message="Incorrect password, please try again."
-      >
-        <Button
-          buttonStyle="solid"
-          type="button"
-          className="!bg-gray-200 !border-none !text-black hover:!bg-gray-300"
-          onClick={() => { dispatch(closeModal()) }}>
-          Close
-        </Button>
-      </ErrorModal>
+      <Modal props={modalProps} handleClose={closeModal}>
+        <div className='p-5 text-center'>
+          Looks like you have entered invalid password.
+        </div>
+        <div className="flex items-center justify-center gap-4 mb-4">
+        <button className='bg-green-600 hover:bg-green-800 py-1 px-4 rounded-md' onClick={closeModal}>Close</button>
+        </div>
+      </Modal>
       <div className="flex items-center justify-center h-[100vh]">
         <Card>
           <div className="flex flex-col m-auto w-100 items-center xl:w-[300px] rounded-xl ">

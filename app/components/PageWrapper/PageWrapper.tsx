@@ -4,7 +4,7 @@ import ToggleTheme from "@/app/components/ToggleTheme/ToggleTheme";
 import Auth from "@/app/components/Auth/Auth";
 import MainWrapper from './MainWrapper';
 
-const page = ({ children }: { children: React.ReactNode }) => {
+const page = ({ children }: { children?: React.ReactNode }) => {
   return (
     <div className='relative h-[100vh] overflow-y-scroll'>
       <div className="bg-land dark:bg-dark-land bg-cover bg-fixed text-slate-800 min-h-[100%]">

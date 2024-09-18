@@ -14,8 +14,8 @@ pipeline {
    //  }
    stage('Reassign User'){
         steps {
-          sh 'git config --global user.email "you@example.com'
-          sh 'git config --global user.name "Your Name'
+          sh 'git config --global user.email "you@example.com"'
+          sh 'git config --global user.name "Your Name"'
         }
    }
    stage('Push to Github') {

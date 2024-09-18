@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,15 +22,36 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@hooks/*": ["./app/hooks/*"],
-      "@utils/*": ["./app/utils/*"],
-      "@components/*": ["./app/components/*"],
-      "@pages/*": ["./app/(pages)/*"],
-      "@store/*": ["./app/store/*"],
-
-    }
+      "@/*": [
+        "./*"
+      ],
+      "@hooks/*": [
+        "app/hooks/*"
+      ],
+      "@utils/*": [
+        "app/utils/*"
+      ],
+      "@components/*": [
+        "app/components/*"
+      ],
+      "@pages/*": [
+        "app/(pages)/*"
+      ],
+      "@store/*": [
+        "app/store/*"
+      ]
+    },
+    "moduleResolution": "node"
   },
-  "include": [".", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "@testing-library/jest-dom"],
-  "exclude": ["node_modules"]
+  "include": [
+    ".",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "@testing-library/jest-dom"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

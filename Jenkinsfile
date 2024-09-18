@@ -1,30 +1,23 @@
 pipeline {
   agent any
-  tools { nodejs 'nodejs'}
+
   stages {
+    
     stage('Display all files') {
       steps {
         sh 'ls'
         sh 'cat package.json'
       }
     }
-    
-    stage('Check Node Version') {
-      steps {
-        sh 'node -v'
-      }
-    }
-
-    stage('Check GIT Version') {
-      steps {
-        sh 'git -v'
-      }
-    }
+  
 
    stage('Build the Application') {
       steps {
-        sh 'npm install'
-        sh 'npm run build'
+        nodejs(nodeJSInstallationName: 'nodejs') {
+            sh 'npm install'
+            sh 'npm run build'
+        }
+ 
       }
     }
 

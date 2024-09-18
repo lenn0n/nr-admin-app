@@ -3,12 +3,12 @@ import Image from "next/image"
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
 import { useAxios, useCookie, useEncryption } from "@hooks/all";
-import Input from "@/app/components/Forms/Input";
-import Button from "@/app/components/Forms/Button";
+import Input from "@components/Forms/Input";
+import Button from "@components/Forms/Button";
 import NRLogo from "@/public/nr.png"
-import Link from "@/app/components/Navs/Link";
-import Card from "@/app/components/Card/Card";
-import Form from "@/app/components/Forms/Form";
+import Link from "@components/Navs/Link";
+import Card from "@components/Card/Card";
+import Form from "@components/Forms/Form";
 import useModal, { Modal } from "@hooks/useModal"
 
 export default function Login() {

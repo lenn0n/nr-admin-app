@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react'
 import { useAxios } from "@hooks/all"
-import useTable from '@/app/hooks/useTable';
+import useTable from '@hooks/useTable';
 
 const Page = () => {
   const { get } = useAxios()

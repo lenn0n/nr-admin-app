@@ -1,4 +1,4 @@
-import { isCallbackValid } from "@/app/utils/validator"
+import { isCallbackValid } from "@utils/validator"
 
 type Props = {
   type?: React.HTMLInputTypeAttribute,

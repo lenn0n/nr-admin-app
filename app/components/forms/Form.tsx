@@ -1,5 +1,5 @@
 import React from 'react'
-import { isCallbackValid } from '@/app/utils/validator'
+import { isCallbackValid } from '@utils/validator'
 
 type FormProps = {
   children: React.ReactNode,

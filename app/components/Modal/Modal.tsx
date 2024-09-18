@@ -1,7 +1,7 @@
 'use client'
 import { createPortal } from 'react-dom';
-import { useSelector, useDispatch } from "@/app/hooks/all"
-import { closeModal } from "@/app/store/reducers/modal";
+import { useSelector, useDispatch } from "@hooks/all"
+import { closeModal } from "@store/reducers/modal";
 
 type ModalProps = {
   id: string,

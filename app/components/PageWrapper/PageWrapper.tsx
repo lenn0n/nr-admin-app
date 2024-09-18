@@ -1,7 +1,7 @@
 
 import React from 'react'
-import ToggleTheme from "@/app/components/ToggleTheme/ToggleTheme";
-import Auth from "@/app/components/Auth/Auth";
+import ToggleTheme from "@components/ToggleTheme/ToggleTheme";
+import Auth from "@components/Auth/Auth";
 import MainWrapper from './MainWrapper';
 
 const page = ({ children }: { children?: React.ReactNode }) => {

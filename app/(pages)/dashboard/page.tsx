@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useAxios } from "@hooks/all"
-import { formatRawNumber } from '@/app/utils/validator'
+import { formatRawNumber } from '@utils/validator'
 import ReceiveMoneyIcon from "@/public/receive-money.png"
 import CollectMoneyIcon from "@/public/collect-money.png"
 import AvailableUnitIcon from "@/public/available-unit.png"

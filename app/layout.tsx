@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { AR_One_Sans } from "next/font/google";
 import { ThemeProvider } from 'next-themes'
 
-import PrelineScript from "@/app/components/PrelineScript";
-import PageWrapper from "@/app/components/PageWrapper/PageWrapper";
-import StoreProvider from "@/app/store/StoreProvider";
+import PrelineScript from "@components/PrelineScript";
+import PageWrapper from "@components/PageWrapper/PageWrapper";
+import StoreProvider from "@store/StoreProvider";
 
 import "./globals.css";
 

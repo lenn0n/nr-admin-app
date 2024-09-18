@@ -1,8 +1,8 @@
 
 'use client'
 import { useState, useEffect } from 'react'
-import Card from '@/app/components/Card/Card'
-import Logout from '@/app/components/PageWrapper/Logout'
+import Card from '@components/Card/Card'
+import Logout from '@components/PageWrapper/Logout'
 import Image from "next/image"
 import { HomeModernIcon, CreditCardIcon, UserGroupIcon, UsersIcon, BuildingOffice2Icon } from '@heroicons/react/24/solid'
 

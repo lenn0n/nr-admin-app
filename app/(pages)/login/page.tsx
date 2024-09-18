@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
 import { useAxios, useCookie, useEncryption } from "@hooks/all";
-import Input from "@components/Forms/Input";
+import Input from "../../components/Forms/Input";
 import Button from "@components/Forms/Button";
 import NRLogo from "@/public/nr.png"
 import Link from "@components/Navs/Link";

@@ -13,7 +13,7 @@ pipeline {
 
    stage('Build the Application') {
       steps {
-        nodejs(nodeJSInstallationName: 'nodejs') {
+        nodejs(nodeJSInstallationName: 'nodejs2') {
             sh 'npm install'
             sh 'npm run build'
         }

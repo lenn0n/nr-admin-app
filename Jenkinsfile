@@ -20,11 +20,11 @@ pipeline {
    }
    stage('Push to Github') {
       steps {
-        sh 'touch test.txt'
+        sh 'touch test2.txt'
         sh 'git add .'
         sh "git commit -m 'Commit from Jenkins'"
         withCredentials([gitUsernamePassword(credentialsId: 'gh-cred', gitToolName: 'Default')]) {
-            sh "git push -u origin master"
+            sh "git push -u origin HEAD:master"
         }
       }
     }

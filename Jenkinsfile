@@ -12,7 +12,7 @@ pipeline {
  
    //    }
    //  }
-   stage('Reassign User'){
+   stage('Assign global email and name'){
         steps {
           sh 'git config --global user.email "auto@jenkins.com"'
           sh 'git config --global user.name "Jenkins"'
@@ -20,7 +20,7 @@ pipeline {
    }
    stage('Push to Github') {
       steps {
-        sh 'touch test2.txt'
+        sh 'touch something_new.txt'
         sh 'git add .'
         sh "git commit -m 'Commit from Jenkins'"
         withCredentials([gitUsernamePassword(credentialsId: 'gh-cred', gitToolName: 'Default')]) {

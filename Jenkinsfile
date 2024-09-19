@@ -22,7 +22,7 @@ pipeline {
       steps {
         sh 'git add .'
         sh "git commit -m 'Commit from Jenkins'"
-        withCredentials([gitUsernamePassword(credentialsId: 'gh-secret', gitToolName: 'Default')]) {
+        withCredentials([gitUsernamePassword(credentialsId: 'gh-cred', gitToolName: 'Default')]) {
             sh "git push -u origin master"
         }
       }

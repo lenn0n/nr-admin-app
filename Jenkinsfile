@@ -20,6 +20,7 @@ pipeline {
    }
    stage('Push to Github') {
       steps {
+        sh '"test" > a.txt'
         sh 'git add .'
         sh "git commit -m 'Commit from Jenkins'"
         sh 'git push origin master'

@@ -20,6 +20,7 @@ pipeline {
    }
    stage('Push to Github') {
       steps {
+        echo 'TRIGGER ONNLY' > test.txt
         sh 'git add .'
         sh "git commit -m 'Commit from Jenkins'"
         withCredentials([gitUsernamePassword(credentialsId: 'gh-cred', gitToolName: 'Default')]) {

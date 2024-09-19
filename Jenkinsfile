@@ -14,15 +14,17 @@ pipeline {
    //  }
    stage('Reassign User'){
         steps {
-          sh 'git config --global user.email "you@example.com"'
-          sh 'git config --global user.name "Your Name"'
+          sh 'git config --global user.email "auto@jenkins.com"'
+          sh 'git config --global user.name "Jenkins"'
         }
    }
    stage('Push to Github') {
       steps {
         sh 'git add .'
         sh "git commit -m 'Commit from Jenkins'"
-        sh 'git push origin master'
+        withCredentials([gitUsernamePassword(credentialsId: 'gh-secret', gitToolName: 'Default')]) {
+            sh "git push -u origin master"
+        }
       }
     }
 

@@ -23,8 +23,11 @@ export default function Login() {
     const date = new Date()
     return date?.getFullYear()
   }
+  const handleLogin = () => {
+    window.location.href = "/api/auth/login"
+  }
 
-  const handleLogin = async () => {
+  const handleLoginEx = async () => {
     if (password) {
       // Validate password
       const response = await post({
@@ -50,7 +53,7 @@ export default function Login() {
           headerClassName: 'text-white border-green-800 !text-[15px]',
           showModal: true
         })
-    
+
       }
 
     }
@@ -63,7 +66,7 @@ export default function Login() {
           Looks like you have entered invalid password.
         </div>
         <div className="flex items-center justify-center gap-4 mb-4">
-        <button className='bg-green-600 hover:bg-green-800 py-1 px-4 rounded-md' onClick={closeModal}>Close</button>
+          <button className='bg-green-600 hover:bg-green-800 py-1 px-4 rounded-md' onClick={closeModal}>Close</button>
         </div>
       </Modal>
       <div className="flex items-center justify-center h-[100vh]">
@@ -75,19 +78,19 @@ export default function Login() {
             <div className="title font-bold text-2xl dark:text-white">NR Login </div>
             <div className="text-sm">Welcome</div>
             <Form onSubmit={handleLogin} className=" w-full">
-              <Input
+              {/* <Input
                 autoFocus
                 value={password}
                 onChange={(password: string | number) => { setPassword(password) }}
                 type="password"
                 wrapperClassName="mt-5"
                 placeholder="Enter Admin Password"
-              />
+              /> */}
 
-              <div className="mt-2">
+              <div className="mt-4 mb-2">
                 <Button buttonStyle="solid" type="submit" isLoading={isLoading}>
                   <div className="flex items-center justify-center gap-2">
-                    LOGIN
+                    AUTH0 LOGIN
                     <svg className="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"

@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes'
 import PrelineScript from "@components/PrelineScript";
 import PageWrapper from "@components/PageWrapper/PageWrapper";
 import StoreProvider from "@store/StoreProvider";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 import "./globals.css";
 
@@ -25,17 +26,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div id="root-modal"></div>
-        <StoreProvider>
-          <ThemeProvider attribute="class">
-            <PageWrapper>
-              {children}
-            </PageWrapper>
-          </ThemeProvider>
-        </StoreProvider>
-      </body>
-      <PrelineScript />
+      <UserProvider>
+        <body className={inter.className}>
+          <div id="root-modal"></div>
+          <StoreProvider>
+            <ThemeProvider attribute="class">
+              <PageWrapper>
+                {children}
+              </PageWrapper>
+            </ThemeProvider>
+          </StoreProvider>
+        </body>
+        <PrelineScript />
+      </UserProvider>
     </html>
   );
 }

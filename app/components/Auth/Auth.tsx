@@ -1,30 +1,25 @@
 'use client'
-import { useLayoutEffect, useState } from "react"
-import { useCookie } from "@hooks/all"
+import { useLayoutEffect } from "react"
 import { redirect } from 'next/navigation'
-
+import { useUser } from '@auth0/nextjs-auth0/client';
 type AuthProps = {
   children: React.ReactNode
 }
 
 const Auth = ({ children }: AuthProps) => {
-  const [hasLoaded, setHasLoaded] = useState<boolean>(false)
-
+  const { user, isLoading } = useUser();
   useLayoutEffect(() => {
-    const { getCookie } = useCookie();
     const listOfPathnames = ["/login", "/"];
-
-    if (getCookie('user_token') && listOfPathnames.indexOf(window.location.pathname) != -1) {
-      redirect('/dashboard')
-    } else if (getCookie('user_token') == '' && listOfPathnames.indexOf(window.location.pathname) == -1) {
-      redirect('/')
+    if (!isLoading) {
+      if (user && listOfPathnames.indexOf(window.location.pathname) != -1) {
+        redirect('/dashboard')
+      } else if (!user && listOfPathnames.indexOf(window.location.pathname) == -1) {
+        redirect('/')
+      }
     }
+  }, [isLoading])
 
-    setHasLoaded(true)
-
-  }, [])
-
-  return hasLoaded ? children : <></>
+  return !isLoading ? children : <></>
 }
 
 export default Auth
